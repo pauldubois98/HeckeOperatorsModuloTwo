@@ -4,32 +4,29 @@ using SparseArrays: SparseVector, spzeros, dropzeros!, sparse
 include("../ModularFormsModuloTwo.jl/src/ModularFormsModuloTwo.jl")
 using .ModularFormsModuloTwo
 MF2 = ModularFormsModuloTwo
-
-
-# parameters
-MAX_DELTA = 1000
-MAX_PRIME = 1000
-MAX_POWER = 50
-# load Hecke primes
-Hecke_primes = MF2.loadHeckePrimesListBinary(MAX_PRIME, MAX_DELTA)
-# load Hecke powers
-Hecke_powers = MF2.loadHeckePowersListBinary(MAX_POWER, MAX_DELTA)
-
-
 include("number_types.jl");
+
+# load Hecke powers
+MAX_DELTA = 1000
+MAX_POWER = 50
+Hecke_powers = MF2.loadHeckePowersListBinary(MAX_POWER, MAX_DELTA)
+# load Hecke primes
+MAX_DELTA = 100
+MAX_PRIME = 10000
+Hecke_primes = MF2.loadHeckePrimesListBinary(MAX_PRIME, MAX_DELTA)
+
+
 
 MAXI = 20
 MAXI_3 = MAXI
 MAXI_5 = MAXI
-MAXI_PRIMES = 1000
 
-primes = Primes.primes(3, MAXI_PRIMES)
-a_ij = Array{Union{Array{Int8,2},Nothing},1}(undef, MAXI_PRIMES)
+primes = Primes.primes(3, MAX_PRIME)
+a_ij = Array{Union{Array{Int8,2},Nothing},1}(undef, MAX_PRIME)
 # for p in primes
 #     print(p, ' ')
 #     a_ij[p] = zeros(Int8, MAXI_3, MAXI_5)
 # end
-
 
 
 for p in primes
@@ -118,6 +115,8 @@ for p in primes
     a_ij[p] = a_p
 end
 
+
+println(size(a_ij))
     
 # final saving (standard naming)
 @save joinpath(@__DIR__, "a_ij(p)-"*"max_prime"*string(MAX_PRIME)*"-"*"length"*string(MAXI)*".jdl2") a_ij
