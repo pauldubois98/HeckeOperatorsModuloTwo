@@ -11,31 +11,24 @@ files = [
     ]
 #iterate through files
 for file in files:
-    print('\n\n\n')
-    print("\t\t"+file)
+    print("\n\n\t"+file)
     conjugacy_classes = galois_conjugacy_classes(file)
     ident = galois_group_id(file)
     name = group_name(ident)
 
     # Galois group identification
-    print("\t Galois group identification:")
+    print("Galois group identification:")
     print("In GAP4:", ident)
     print("Name:", name)
     print()
     
     #iterate through i+j=3
-    for i,j in [(3,0), (2,1), (1,2), (0,3), (4,0), (3,1), (2,2), (1,3), (0,4), (5,0), (0,5), ]:
-        print("\n\ta_",i,',',j,':', sep='')
+    for i,j in [(3,0), (2,1), (1,2), (0,3), \
+                (4,0), (3,1), (2,2), (1,3), (0,4), \
+                (5,0), (4,1), (3,2), (2,3), (1,4), (0,5), ]:
+        print("a_",i,',',j,':', sep='', end=' ')
         # a_ij
         primes1, primes0, primes_undefined = a_ij(i,j)
-
-        # print primes types
-##        print("0 - primes:")
-##        print(primes0[:10])
-##        print("1 - primes:")
-##        print(primes1[:10])
-##        print()
-
 
         #init frob lists
         frobenius0 = list()
@@ -69,7 +62,7 @@ for file in files:
                     break
             if found:
                 # if it is, there is a problem for this prime
-                print(p, ": wrong conjugacy class")
+                print(p, "wrong conjugacy class")
                 #print(F_p)
                 break
             else:
