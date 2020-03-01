@@ -1,5 +1,11 @@
+Galois identify
+[8, 2]
+
+
 Galois conjug classes
 [[Vecsmall([1, 2, 3, 4, 5, 6, 7, 8])], [Vecsmall([2, 3, 4, 1, 6, 7, 8, 5])], [Vecsmall([3, 4, 1, 2, 7, 8, 5, 6])], [Vecsmall([4, 1, 2, 3, 8, 5, 6, 7])], [Vecsmall([5, 6, 7, 8, 1, 2, 3, 4])], [Vecsmall([6, 7, 8, 5, 2, 3, 4, 1])], [Vecsmall([7, 8, 5, 6, 3, 4, 1, 2])], [Vecsmall([8, 5, 6, 7, 4, 1, 2, 3])]]
+
+
 
 
 3

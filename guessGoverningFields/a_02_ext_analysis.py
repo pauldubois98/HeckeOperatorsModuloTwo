@@ -14,7 +14,15 @@ for file in files:
     print('\n\n\n')
     print("\t\t"+file)
     conjugacy_classes = galois_conjugacy_classes(file)
-    
+    ident = galois_group_id(file)
+    name = group_name(ident)
+
+    # Galois group identification
+    print("\t Galois group identification:")
+    print("In GAP4:", ident)
+    print("Name:", name)
+    print()
+
     #iterate through i+j=3
     for i,j in [(3,0), (2,1), (1,2), (0,3), (4,0), (3,1), (2,2), (1,3), (0,4), (5,0), (0,5), ]:
         print("\n\ta_",i,',',j,':', sep='')

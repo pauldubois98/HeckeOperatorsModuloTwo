@@ -35,8 +35,13 @@ forvec(X=[[0,1],[0,1],[0,1],[0,1]], {
 	filename = Str("a_02_ext_" X[1] X[2] X[3] X[4] ".txt");
 	file = fileopen(filename, "w");
 	print(filename);
+
+	/* first group identification */
+	filewrite(file, "Galois identify");
+	filewrite(file, galoisidentify(G));
+	filewrite(file, "\n");
 	
-	/* first conjugacy classes */
+	/* second conjugacy classes */
 	filewrite(file, "Galois conjug classes");
 	filewrite(file, galoisconjclasses(G));
 	filewrite(file, "\n");

@@ -8,7 +8,14 @@ primes1, primes0, primes_undefined = a_ij(0,4)
 # frobenian elements
 file = "a_02_ext_0111.txt"
 conjugacy_classes = galois_conjugacy_classes(file)
+ident = galois_group_id(file)
+name = group_name(ident)
 
+# Galois group identification
+print("\t Galois group identification:")
+print("In GAP4:", ident)
+print("Name:", name)
+print()
 
 # print primes types
 print("\t 0 - primes:")
@@ -64,13 +71,28 @@ for p in primes0:
         else:
             frobenius0.append(F_p)
 
-# frobenian elements of 0-primes
 print()
+
+# frobenian elements of 0-primes
 print("\t Frobenius of 0-primes:")
 print(frobenius0)
 
 # frobenian elements of 0-primes
-print()
 print("\t Frobenius of 1-primes:")
 print(frobenius1)
 
+print()
+
+# Chebotarev
+print("\t Chebotarev Density Theorem Data:")
+print("Frobenius of 1-primes classes sizes:")
+print("#C =", conjugacy_classes_size(frobenius1, conjugacy_classes), \
+'\t', "(arranged in", len(frobenius1), "conjugacy classes)")
+print("Goup size:")
+print("#G =", group_size(conjugacy_classes))
+
+# probas
+print("\t Probablities Data:")
+print("Number of 1-primes:", len(primes1))
+print("Number of 0-primes:", len(primes0))
+print("Number of odd primes:", len(primes0)+len(primes1))
