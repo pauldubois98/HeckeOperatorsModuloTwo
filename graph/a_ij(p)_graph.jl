@@ -32,10 +32,10 @@ for i in 0:3
     plt1 = plot(x, number_ones, legend=false, title="\$S_n = \\{a_{"*string(i)*","*string(j)*"}(p)=1 \\ | \\ p \\leq p_n\\}\$", xlabel = "\$n\$", ylabel = "\$|S_n|\$")
     plt2 = plot(x, ratio_ones, legend=false, title="\$S_n = \\{a_{"*string(i)*","*string(j)*"}(p)=1 \\ | \\ p \\leq p_n\\}\$", xlabel = "\$n\$", ylabel = "\$\\frac{|S_n|}{n}\$")
     #save
-    savefig(plt1, "graph/a_"*string(i)*","*string(j)*"_exact.svg")
-    savefig(plt2, "graph/a_"*string(i)*","*string(j)*"_relative.svg")
-    savefig(plt1, "graph/a_"*string(i)*","*string(j)*"_exact.png")
-    savefig(plt2, "graph/a_"*string(i)*","*string(j)*"_relative.png")
+    savefig(plt1, joinpath(@__DIR__, "a_"*string(i)*","*string(j)*"_exact.svg") )
+    savefig(plt2, joinpath(@__DIR__, "a_"*string(i)*","*string(j)*"_relative.svg") )
+    savefig(plt1, joinpath(@__DIR__, "a_"*string(i)*","*string(j)*"_exact.png") )
+    savefig(plt2, joinpath(@__DIR__, "a_"*string(i)*","*string(j)*"_relative.png") )
 
 
 end

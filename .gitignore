@@ -1,4 +1,12 @@
+# CMD link
 *.lnk
+
+# Python
 __pycache__
+*.pyc
+
+# VS Code
 .vscode
+
+# GP
 gp_history.txt

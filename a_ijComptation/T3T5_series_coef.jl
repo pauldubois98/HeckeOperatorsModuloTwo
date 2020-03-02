@@ -1,7 +1,7 @@
 using Primes
 using JLD2, FileIO
 using SparseArrays: SparseVector, spzeros, dropzeros!, sparse
-include("../ModularFormsModuloTwo.jl/src/ModularFormsModuloTwo.jl")
+include("../../ModularFormsModuloTwo.jl/src/ModularFormsModuloTwo.jl")
 using .ModularFormsModuloTwo
 MF2 = ModularFormsModuloTwo
 include("number_types.jl");
