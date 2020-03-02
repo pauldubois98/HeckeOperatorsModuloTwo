@@ -1,0 +1,4 @@
+magick convert -delay 50 -loop 1 *png movie1.gif
+
+magick convert -delay 50 -loop 0 *png movie0.gif
+
