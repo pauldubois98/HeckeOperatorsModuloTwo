@@ -1,8 +1,8 @@
 using PrettyTables
 include("codeOfNumbers.jl")
 
-MAX_ROWS = 5*10^2
-MAX_COLS = 5*10^2
+MAX_ROWS = 15
+MAX_COLS = 15
 code_table = Array{Any, 2}(undef, MAX_ROWS+1, MAX_COLS+2)
 code_header = Array{Any, 1}(undef, MAX_COLS+2)
 
@@ -50,4 +50,4 @@ end
 ## text
 pretty_table(code_table, code_header)
 ## latex
-#pretty_table(code_table, code_header, backend=:latex)
+pretty_table(code_table, code_header, backend=:latex)

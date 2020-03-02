@@ -1,4 +1,3 @@
-using PrettyTables
 using Plots
 using Plots.PlotMeasures
 using LaTeXStrings
