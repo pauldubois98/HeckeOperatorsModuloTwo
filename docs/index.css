@@ -18,9 +18,25 @@ h3{
     color: slateblue;
 }
 ul{
-    margin-left: 40%;
+    margin-left: 0%;
     list-style-type: none;
 }
+@media screen and (min-width: 600px) {
+    ul{
+        margin-left: 10%;
+    }
+}
+@media screen and (min-width: 992px) {
+    ul{
+        margin-left: 30%;
+    }
+}
+@media screen and (min-width: 1200px) {
+    ul{
+        margin-left: 35%;
+    }
+}
+
 li, a{
     font-size: larger;
     color: slateblue;

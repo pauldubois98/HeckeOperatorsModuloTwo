@@ -1,0 +1,28 @@
+h1{
+    color: red;
+    text-align: center;
+    margin-top: 0.5em;
+}
+h4{
+    text-decoration: none;
+    text-align: center;
+    color: orange;
+    margin: 0;
+}
+h2{
+    color: slateblue;
+    color: rebeccapurple;
+}
+h3{
+    text-decoration: none;
+    font-weight: bold;
+    color: grey;
+    margin: 0;
+    margin-top: 0.5em;
+}
+.current{
+    color: black;
+}
+a{
+    color: dimgray;
+}
