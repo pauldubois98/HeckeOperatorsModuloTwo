@@ -5,7 +5,7 @@ using LaTeXStrings
 
 # table & header init
 table = Array{Any, 2}(undef, 183, 2)
-header = ["a_ij", "{p prime | a_ij(p) = 1 }", ] # text
+header = ["a_ij", "{p prime | a_ij(p) = 1}", ] # text
 #header = ["\$a_{ij}\$", "\$ \\lbrace p \\in \\mathbb{P} \\ | \\ a_{ij}(p) = 1 \\rbrace \$", ] # latex
 
 # parameters

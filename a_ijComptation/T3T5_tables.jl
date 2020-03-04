@@ -26,7 +26,7 @@ for p in primes(3,MAX_PRIME)
         table[i,1] = "T_3^"*string(i-1)
     end
     for j in 1:MAXI
-        header[j+1] = "T_5^"*string(j-2)
+        header[j+1] = "T_5^"*string(j-1)
     end
     for i in 1:MAXI
         for j in 1:MAXI
