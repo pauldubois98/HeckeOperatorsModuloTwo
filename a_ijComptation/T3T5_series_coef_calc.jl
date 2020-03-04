@@ -31,7 +31,6 @@ a_ij = Array{Union{Array{Int8,2},Nothing},1}(undef, MAX_PRIME)
 
 for p in primes
     # init 
-    a_p = sparse([1,], [1,], [2,], MAXI, MAXI)
     a_p = -ones(MAXI, MAXI)
     a_p[1,1]=0
     #known
