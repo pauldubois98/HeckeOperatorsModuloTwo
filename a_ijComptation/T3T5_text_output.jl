@@ -7,6 +7,7 @@ MAX_PRIME = 10000
 MAXI = 20
 # standard naming
 file_name = "a_ij(p)-"*"max_prime"*string(MAX_PRIME)*"-"*"length"*string(MAXI)
+file_name = "a_ij(p)-merged"
 # load
 a_ij = load(joinpath(@__DIR__, file_name*".jdl2"), "a_ij")
 println(file_name)
