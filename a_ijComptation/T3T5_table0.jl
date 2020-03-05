@@ -35,7 +35,7 @@ for s in 0:MAXI-1
         if length(primes_1)==0
             #pass
         else
-            table[line,1] = "a_"*string(i)*string(j)*""
+            table[line,1] = "a_"*string(i)*","*string(j)*""
             table[line,2] = string(primes_0)[2:end-1]
             line += 1
         end
