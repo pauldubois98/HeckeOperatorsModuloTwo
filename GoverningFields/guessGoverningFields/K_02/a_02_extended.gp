@@ -8,7 +8,7 @@ print(T);
 M = bnfinit(T);
 
 /* generator for the torsion units */
-z8 = M.tu[2];
+mu = M.tu[2];
 /* fundamental units */
 v1 = M.fu[1];
 v2 = M.fu[2];
@@ -23,7 +23,7 @@ forvec(X=[[0,1],[0,1],[0,1],[0,1]], {
 	if(X==[0,0,0,0], next());
 	/*print(X);
 	/* element to extend */
-	alpha = z8^X[1]*v1^X[2]*v2^X[3]*v3^X[4];
+	alpha = mu^X[1]*v1^X[2]*v2^X[3]*v3^X[4];
 	/* extesion */
 	L0 = rnfinit(M1, x^2-alpha, 0);
 	L = nfinit(L0);
@@ -35,6 +35,13 @@ forvec(X=[[0,1],[0,1],[0,1],[0,1]], {
 	filename = Str("a_02_ext_" X[1] X[2] X[3] X[4] ".txt");
 	file = fileopen(filename, "w");
 	print(filename);
+	filewrite(file, "Extension");
+	filewrite(file, alpha);
+	filewrite(file, "y");
+	filewrite(file, "\\sqrt[4]{2}");
+	filewrite(file, "Q(\\zeta_8)(\\sqrt{1+i})");
+	filewrite(file, "\n");
+	
 
 	/* first group identification */
 	filewrite(file, "Galois identify");

@@ -1,14 +1,11 @@
-/*parisizemax = 128*/
-
 P = z^4+1;
 Q8 = nfinit(P);
 M0 = rnfinit(Q8, y^2-(1+z^2), 1);
 M1 = nfinit(M0);
 M2 = bnfinit(M1[1]);
+z8 = M2.tu[2];
 v1 = M2.fu[1];
-v2 = M2.fu[2];
-v3 = M2.fu[3];
-alpha = v1*v2*v3;
+alpha = z8*v1;
 M3 = rnfinit(M1, x^2-alpha, 0);
 M4 = nfinit(M3);
 T = M4[1];
@@ -24,7 +21,6 @@ print(length(M.fu));
 z8 = M.tu[2];
 
 ext_codes = [ [0, 0, 0, 0, 0, 0, 0, 1], [1, 1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 1] ]
-ext_codes = [ [1, 1, 1, 0, 0, 0, 0, 0], [1, 1, 1, 0, 0, 0, 0, 1] ]
 
 for(ind=1, 3,{
 	/* extension details*/
@@ -46,15 +42,11 @@ for(ind=1, 3,{
 
 	/* first group identification */
 	filewrite(file, "Galois identify");
-	print("galois identify");
-	print(galoisidentify(G));
 	filewrite(file, galoisidentify(G));
 	filewrite(file, "\n");
 	
 	/* second conjugacy classes */
 	filewrite(file, "Galois conjug classes");
-	print("conj classes");
-	print(galoisconjclasses(G));
 	filewrite(file, galoisconjclasses(G));
 	filewrite(file, "\n");
 	

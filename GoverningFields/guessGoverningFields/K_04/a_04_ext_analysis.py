@@ -22,8 +22,12 @@ for file in files:
     print("Name:", name)
     print()
 
-    #iterate through i+j=3
-    for i,j in [(0,3), (0,4), (0,5), (0,7), (0,8), (0,9), (0,10)]:
+    for i,j in [(2,0), (3,0), (4,0), \
+                (5,0), (4,1), (3,2), (2,3), (1,4), (0,5), \
+                (6,0), (5,1), (4,2), (3,3), (2,4), (1,5), (0,6), \
+                (7,0), (0,7), \
+                (8,0), (0,8), \
+                (9,0), (0,9), ]:
         print("a_",i,',',j,':', sep='', end=' ')
         # a_ij
         primes1, primes0, primes_undefined = a_ij(i,j)
@@ -47,7 +51,8 @@ for file in files:
             else:
                 frobenius1.append(F_p)
 
-
+        wrong = False
+        
         #fill 0-primes frob elements
         for p in primes0:
             #load element
@@ -61,6 +66,7 @@ for file in files:
             if found:
                 # if it is, there is a problem for this prime
                 print(p, "wrong conjugacy class")
+                wrong = True
                 #print(F_p)
                 break
             else:
@@ -74,6 +80,8 @@ for file in files:
                     pass
                 else:
                     frobenius0.append(F_p)
+        if not wrong:
+            print() # no wrong conjugacy class
             
 
 

@@ -49,6 +49,7 @@ for file in files:
             else:
                 frobenius1.append(F_p)
 
+        wrong = False
 
         #fill 0-primes frob elements
         for p in primes0:
@@ -63,6 +64,7 @@ for file in files:
             if found:
                 # if it is, there is a problem for this prime
                 print(p, "wrong conjugacy class")
+                wrong = True
                 #print(F_p)
                 break
             else:
@@ -76,6 +78,8 @@ for file in files:
                     pass
                 else:
                     frobenius0.append(F_p)
+        if not wrong:
+            print() # no wrong conjugacy class
             
 
 

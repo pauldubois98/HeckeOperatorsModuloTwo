@@ -8,6 +8,7 @@ files = [
     "a_11_ext_0100.txt",
     "a_11_ext_1000.txt",
     "a_11_ext_1100.txt",
+    "a_11_ext_000000000000000.txt",
     ]
 #iterate through files
 for file in files:
@@ -49,6 +50,7 @@ for file in files:
             else:
                 frobenius1.append(F_p)
 
+        wrong = False
 
         #fill 0-primes frob elements
         for p in primes0:
@@ -63,6 +65,7 @@ for file in files:
             if found:
                 # if it is, there is a problem for this prime
                 print(p, "wrong conjugacy class")
+                wrong = True
                 #print(F_p)
                 break
             else:
@@ -76,5 +79,7 @@ for file in files:
                     pass
                 else:
                     frobenius0.append(F_p)
+        if not wrong:
+            print() # no wrong conjugacy class
 
 

@@ -1,4 +1,5 @@
 import requests
+import re
 
 def frobenius_of_prime(p, file):
     f = open(file, 'r')
@@ -70,5 +71,48 @@ def conjugacy_classes_size(elements, conjugacy_classes):
     for e in elements:
         n += conjugacy_classe_size(e, conjugacy_classes)
     return n
+
+
+
+def adjoint_element(file, text='Extension'):
+    f = open(file, 'r')
+    l = f.readline()
+    while text+'\n'!=l:
+        l = f.readline()
+    l = f.readline()
+    f.close()
+    return l[:-1].replace('Mod(', '').replace(')', '')
+
+
+def ext_replace(file, text='Extension'):
+    f = open(file, 'r')
+    l = f.readline()
+    while text+'\n'!=l:
+        l = f.readline()
+    l = f.readline()
+    be = f.readline()[:-1]
+    af = f.readline()[:-1]
+    f.close()
+    return (be,af)
+
+def adjoint_element_repl(file, text='Extension'):
+    repl = ext_replace(file, text)
+    return adjoint_element(file, text).replace(repl[0], repl[1])
+    
+def previous_extension(file, text='Extension'):
+    f = open(file, 'r')
+    l = f.readline()
+    while text+'\n'!=l:
+        l = f.readline()
+    l = f.readline()
+    l = f.readline()
+    l = f.readline()
+    l = f.readline()
+    f.close()
+    return l[:-1]
+
+def full_extension(file, text='Extension'):
+    return previous_extension(file, text)\
+           +"(\\sqrt{"+adjoint_element_repl(file, text)+"})"
 
 
