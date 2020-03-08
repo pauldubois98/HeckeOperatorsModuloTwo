@@ -36,12 +36,14 @@ forvec(X=[[0,1],[0,1],[0,1],[0,1]], {
 	file = fileopen(filename, "w");
 	print(filename);
 	filewrite(file, "Extension");
-	filewrite(file, alpha);
-	filewrite(file, "y");
+	filewrite(file, "#3");
+	filewrite(file, "\\mu");
 	filewrite(file, "\\sqrt[4]{2}");
-	filewrite(file, "Q(\\zeta_8)(\\sqrt{1+i})");
-	filewrite(file, "\n");
+	filewrite(file, "sqrt(alpha)");
 	
+	filewrite(file, "sqrt(sqrt(2))");
+	filewrite(file, alpha);
+	filewrite(file, "\n");
 
 	/* first group identification */
 	filewrite(file, "Galois identify");
@@ -54,7 +56,7 @@ forvec(X=[[0,1],[0,1],[0,1],[0,1]], {
 	filewrite(file, "\n");
 	
 	/* forbenius elemnts of primes >2 */
-	forprime(p=3, b=10000, pr = idealprimedec(L,p)[1]; idealfrob = idealfrobenius(L,G,pr); filewrite(file, p); filewrite(file, idealfrob));
+	forprime(p=3, b=10150, pr = idealprimedec(L,p)[1]; idealfrob = idealfrobenius(L,G,pr); filewrite(file, p); filewrite(file, idealfrob));
 	
 	/*pr = idealprimedec(L,3)[1];
 	idealfrob = idealfrobenius(L,G,pr);
@@ -62,9 +64,4 @@ forvec(X=[[0,1],[0,1],[0,1],[0,1]], {
 	
 	fileclose(file)
 
-		
 })
-		
-			
-
-

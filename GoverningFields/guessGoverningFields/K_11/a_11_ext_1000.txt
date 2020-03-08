@@ -1,3 +1,11 @@
+Extension
+#2
+\nu
+sqrt(alpha)
+sqrt(1/2+(sqrt(2)/2)j)
+Mod(y, y^8 + 1)
+
+
 Galois identify
 [16, 5]
 

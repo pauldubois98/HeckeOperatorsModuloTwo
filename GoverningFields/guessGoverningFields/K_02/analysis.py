@@ -2,30 +2,36 @@ from frobenius_loader import *
 from a_ij_loader import *
 
 
-setups = [
-    #(0,2,"a_02_ext_0111.txt"),
-    (0,3,"a_02_ext_0111.txt"),
-    (0,4,"a_02_ext_0111.txt"),
-    #(2,0,"a_20_ext_1100.txt"),
-    (3,0,"a_20_ext_1100.txt"),
-    (4,0,"a_20_ext_1100.txt"),
-    ]
-
-
-for i,j,filename in setups:
-    ## LOAD DATA
-    # a_ij
+def analysis(file, i,j):
+    print('\t\t'+'='*10+' a_'+str(i,)+str(j)+' '+str(file)+' '+'='*10)
+    # DATA
     primes1, primes0, primes_undefined = a_ij(i,j)
-    # frobenian elements
-    conjugacy_classes = galois_conjugacy_classes(filename)
-    ident = galois_group_id(filename)
-    name = group_name(ident)
+    conjugacy_classes = galois_conjugacy_classes(file)
+    galois_ident = galois_group_id(file)
+    galois_name = group_name(galois_ident)
+    extension_name = full_extension(file, tex=2)
+    extension_name_bis = readable_extension(file, tex=2)
 
     # Galois group identification
-    print('\n\n\n\t\t', "i =",i, ", j =",j, "; extension:", filename)
     print("\t Galois group identification:")
-    print("In GAP4:", ident)
-    print("Name:", name)
+    print("In GAP4:", galois_ident)
+    print("Name:", galois_name)
+    print()
+
+    # Extension identification
+    print("\t Extension identification:")
+    print(extension_name)
+    print(" - or - ")
+    print(extension_name_bis)
+    print()
+
+    # print primes types
+    print("\t 0 - primes:")
+    print(primes0[:100])
+    print("\t 1 - primes:")
+    print(primes1[:100])
+    print()
+
 
     #init frob lists
     frobenius0 = list()
@@ -34,7 +40,7 @@ for i,j,filename in setups:
     #fill 1-primes frob elements
     for p in primes1:
         #load element
-        F_p = frobenius_of_prime(p, filename)
+        F_p = frobenius_of_prime(p, file)
         # we add it to the list of 0-primes frob
         found=False
         for F in frobenius1:
@@ -50,7 +56,7 @@ for i,j,filename in setups:
     #fill 0-primes frob elements
     for p in primes0:
         #load element
-        F_p = frobenius_of_prime(p, filename)
+        F_p = frobenius_of_prime(p, file)
         # check it is not conjugate to a frob of a 1-prime
         found=False
         for F in frobenius1:
@@ -73,11 +79,23 @@ for i,j,filename in setups:
             else:
                 frobenius0.append(F_p)
 
+    print()
+
+    # frobenian elements of 0-primes
+    print("\t Frobenius of 0-primes:")
+    print(frobenius0)
+
+    # frobenian elements of 0-primes
+    print("\t Frobenius of 1-primes:")
+    print(frobenius1)
+
+    print()
+
     # Chebotarev
     print("\t Chebotarev Density Theorem Data:")
     print("Frobenius of 1-primes classes sizes:")
     print("#C =", conjugacy_classes_size(frobenius1, conjugacy_classes), \
-          '\t', "(arranged in", len(frobenius1), "conjugacy classes)")
+    '\t', "(arranged in", len(frobenius1), "conjugacy classes)")
     print("Goup size:")
     print("#G =", group_size(conjugacy_classes))
 
@@ -86,3 +104,20 @@ for i,j,filename in setups:
     print("Number of 1-primes:", len(primes1))
     print("Number of 0-primes:", len(primes0))
     print("Number of odd primes:", len(primes0)+len(primes1))
+
+
+
+
+if __name__=='__main__':
+    f = open('to_analyse.txt', 'r')
+    l = f.readline()
+    while l!='':
+        if l[0]!="#":
+            i, j, file = l[:-1].split(',')
+            i = int(i)
+            j = int(j)
+            analysis(file, i,j)
+            print('\n\n')
+        l = f.readline()
+    
+    f.close()

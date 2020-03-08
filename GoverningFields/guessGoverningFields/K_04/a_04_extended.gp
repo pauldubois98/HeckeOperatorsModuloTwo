@@ -40,6 +40,18 @@ for(ind=1, 3,{
 	filename = Str("a_04_ext_" X[1] X[2] X[3] X[4] X[5] X[6] X[7] X[8] ".txt");
 	file = fileopen(filename, "w");
 	print(filename);
+	filewrite(file, "Extension");
+	filewrite(file, "#4");
+	filewrite(file, "\\mu");
+	filewrite(file, "\\sqrt[4]{2}");
+	filewrite(file, "sqrt(alpha)");
+	filewrite(file, "sqrt(beta)");
+	
+	filewrite(file, "sqrt(sqrt(2))");
+	filewrite(file, alpha);
+	filewrite(file, "sqrt(alpha)");
+	filewrite(file, beta);
+	filewrite(file, "\n");
 
 	/* first group identification */
 	filewrite(file, "Galois identify");
