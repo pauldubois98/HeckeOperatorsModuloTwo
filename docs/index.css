@@ -42,6 +42,7 @@ li, a{
     color: rebeccapurple;
     text-decoration: none;
 }
-li:hover{
+a:hover{
     padding-left: 1em;
+    color: blueviolet;
 }
