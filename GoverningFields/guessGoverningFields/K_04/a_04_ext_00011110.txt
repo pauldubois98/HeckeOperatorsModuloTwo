@@ -1,6 +1,6 @@
 Extension
 #4
-\mu
+\zeta_8
 \sqrt[4]{2}
 sqrt(alpha)
 sqrt(beta)

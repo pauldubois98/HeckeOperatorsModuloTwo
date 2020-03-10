@@ -120,9 +120,14 @@ def load_vars(file, text='Extension'):
 def readable_extension(file, text='Extension', tex=True, form=1):
     parts = extension_parts(file, text, tex, form)
     if tex<2:
-        return parts[0]+"\nwhere:\n"+"\nand \n".join(parts[1])
+        extension = parts[0]+"\nwhere:\n"+"\nand \n".join(parts[1])
     else:
-        return '$$'+parts[0]+"$$\nwhere:\n$$"+"$$\nand \n$$".join(parts[1])+'$$'
+        extension = '$$'+parts[0]\
+                    +"$$\nwhere:\n$$"+"$$\nand \n$$".join(parts[1])+'$$'
+    return extension\
+               .replace('\left\left', '\left')\
+               .replace('\right\right', '\right')\
+               .replace('2^{\\frac{3}{4}}', '\\sqrt[4]{2}^3')
 
 def extension_parts(file, text='Extension', tex=True, form=1):
     #load vars
@@ -156,18 +161,29 @@ def extension_parts(file, text='Extension', tex=True, form=1):
         extension = ext+'('+')('.join(adjoint_elements)+')'
     #tex brackets
     if tex:
-        extension = extension.replace('(', '\\left(').replace(')', '\\right)')
+        extension = extension\
+                    .replace('(', '\\left(')\
+                    .replace(')', '\\right)')
+                    
     #addons
     addons = []
-    try:
-        addons.append('\\alpha = '+latex(alpha))
-    except:
-        pass
-    if beta!=0:
+    if alpha!=0:
         try:
-            addons.append('\\beta = '+latex(beta).replace(latex(alpha), '\\alpha'))
+            addons.append('\\alpha = '+latex(alpha))
+            addons[1] = addons[1]\
+                         .replace('\\left(\\alpha\\right)', '\\alpha')
         except:
             pass
+    if beta!=0:
+        try:
+            addons.append('\\beta = '+latex(beta)\
+                          .replace(latex(alpha), '\\alpha'))
+            addons[-1] = addons[-1]\
+                         .replace('\\left(\\alpha\\right)', '\\alpha')
+        except:
+            pass
+    
+
     
     return extension, addons
 
@@ -210,9 +226,17 @@ def full_extension(file, text='Extension', tex=True, form=1):
     if tex:
         extension = extension.replace('(', '\\left(').replace(')', '\\right)')
     if tex>1:
-        return '$$'+extension+'$$'
-    else:
-        return extension
+        extension = '$$'+extension+'$$'
+    return extension\
+           .replace('\\left\\left', '\\left')\
+           .replace('\\right\\right', '\\right')\
+           .replace('2^{\\frac{3}{4}}', '\\sqrt[4]{2}^3')
+
+
+def sqrt_4_2_tau(expression):
+    return expression.replace("\\sqrt[4]{2}", "\\tau")\
+           .replace("\\sqrt{2}", "\\tau^2")\
+           .replace("2^{\\frac{3}{4}}", "\\tau^3")
 
 
 

@@ -24,7 +24,7 @@ forvec(X=[[0,1],[0,1],[0,1],[0,1]], {
 	/*print(X);
 	/* element to extend */
 	alpha = mu^X[1]*v1^X[2]*v2^X[3]*v3^X[4];
-	/* extesion */
+	/* extension */
 	L0 = rnfinit(M1, x^2-alpha, 0);
 	L = nfinit(L0);
 	G = galoisinit(L);
@@ -37,7 +37,7 @@ forvec(X=[[0,1],[0,1],[0,1],[0,1]], {
 	print(filename);
 	filewrite(file, "Extension");
 	filewrite(file, "#3");
-	filewrite(file, "\\mu");
+	filewrite(file, "\\zeta_8");
 	filewrite(file, "\\sqrt{1+i}");
 	filewrite(file, "sqrt(alpha)");
 	

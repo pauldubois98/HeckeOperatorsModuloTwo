@@ -41,7 +41,7 @@ for(ind=1, 3,{
 	print(filename);
 	filewrite(file, "Extension");
 	filewrite(file, "#4");
-	filewrite(file, "\\mu");
+	filewrite(file, "\\zeta_8");
 	filewrite(file, "\\sqrt{1+i}");
 	filewrite(file, "sqrt(alpha)");
 	filewrite(file, "sqrt(beta)");

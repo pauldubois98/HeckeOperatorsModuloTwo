@@ -1,3 +1,8 @@
+Extension
+#1
+\zeta_{16}
+
+
 Galois identify
 [8, 2]
 

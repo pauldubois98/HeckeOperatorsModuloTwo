@@ -7,6 +7,15 @@ G = galoisinit(M);
 
 /* open file */
 file = fileopen("a_11_data.txt", "w");
+filewrite(file, "Extension");
+filewrite(file, "#1");
+filewrite(file, "\\zeta_{16}");
+/*
+filewrite(file, "#2");
+filewrite(file, "\\zeta_8");
+filewrite(file, "\\sqrt{\\zeta_8}");
+*/
+filewrite(file, "\n");
 
 /* first group identification */
 filewrite(file, "Galois identify");

@@ -1,6 +1,6 @@
 Extension
 #3
-\mu
+\zeta_8
 \sqrt{1+i}
 sqrt(alpha)
 sqrt(1+1j)

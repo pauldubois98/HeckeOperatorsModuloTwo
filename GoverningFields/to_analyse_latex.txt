@@ -1,0 +1,59 @@
+##comment
+#%folder
+#-title
+#--name
+#*same governing field as last
+#i,j,filename
+#
+-0k
+%knownGoverningFields/K_01
+--01
+0,1,a_01_data.txt
+%knownGoverningFields/K_02
+--02
+0,2,a_02_data.txt
+%guessGoverningFields/K_02
+--03
+0,3,a_02_ext_0111.txt?
+--04
+*0,4,a_02_ext_0111.txt?
+%guessGoverningFields/K_04
+--05
++0,5,a_04_ext_00011110.txt?
+--06
+*0,6,a_04_ext_00011110.txt?
+--07
+*0,7,a_04_ext_00011110.txt?
+--08
+\For $a_{08}$, it is a little bit special: We found 3 governing fields. This is possible, since governing fields aren't unique. Note, for this case, we did computation only up to $10^3$, which doesn't give a result as strong as for other $a_{ij}$ discussed.
+\\subparagraph{First possibility}
+*0,8,a_04_ext_00011110.txt?
+\\subparagraph{Second possibility}
++0,8,a_04_ext_00000001.txt?
+\\subparagraph{Third possibility}
++0,8,a_04_ext_00011111.txt?
+-kk
+%knownGoverningFields/K_11
+--11
+1,1,a_11_data.txt
+-k0
+%knownGoverningFields/K_10
+--10
+1,0,a_10_data.txt
+%knownGoverningFields/K_20
+--20
+2,0,a_20_data.txt
+%guessGoverningFields/K_20
+--30
+3,0,a_20_ext_1100.txt?
+--40
+*4,0,a_20_ext_1100.txt?
+%guessGoverningFields/K_40
+--50
+5,0,a_40_ext_11100000.txt?
+--60
+*6,0,a_40_ext_11100000.txt?
+--70
+*7,0,a_40_ext_11100000.txt?
+--80
+*8,0,a_40_ext_11100000.txt?

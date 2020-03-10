@@ -1,12 +1,14 @@
 P = z^4+1;
 Q8 = nfinit(P);
-
-M0 = rnfinit(Q8, y^2-(z+z^7), 1);
-M = nfinit(M0);
+M = nfinit(Q8);
 G = galoisinit(M);
 
 /* open file */
-file = fileopen("a_02_data.txt", "w");
+file = fileopen("a_10_data.txt", "w");
+filewrite(file, "Extension");
+filewrite(file, "#1");
+filewrite(file, "\\zeta_8");
+filewrite(file, "\n");
 
 /* first group identification */
 filewrite(file, "Galois identify");
@@ -34,3 +36,4 @@ forprime(p=3, b=10000, {
 });
 
 fileclose(file);
+

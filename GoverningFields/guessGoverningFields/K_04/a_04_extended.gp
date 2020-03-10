@@ -19,15 +19,15 @@ print("# fundamental units:")
 print(length(M.fu));
 
 /* generator for the torsion units */
-z8 = M.tu[2];
+mu = M.tu[2];
 
 ext_codes = [ [0, 0, 0, 0, 0, 0, 0, 1], [0, 0, 0, 1, 1, 1, 1, 0], [0, 0, 0, 1, 1, 1, 1, 1] ]
 
 for(ind=1, 3,{
-	/* extension details*/
+	/* extension details */
 	X = ext_codes[ind];
 	print(X);
-	beta = z8^X[8];
+	beta = mu^X[8];
 	for(i=1,7,beta *= M.fu[i]^X[i]);
 	
 	/* extension */
@@ -42,7 +42,7 @@ for(ind=1, 3,{
 	print(filename);
 	filewrite(file, "Extension");
 	filewrite(file, "#4");
-	filewrite(file, "\\mu");
+	filewrite(file, "\\zeta_8");
 	filewrite(file, "\\sqrt[4]{2}");
 	filewrite(file, "sqrt(alpha)");
 	filewrite(file, "sqrt(beta)");
