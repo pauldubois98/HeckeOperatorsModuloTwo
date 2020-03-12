@@ -14,7 +14,7 @@ println("\$x^iy^j = T_3^iT_5^j\$")
 println("")
 
 for p in primes(3,MAX_PRIME)
-    global a_ij, f_txt
+    global a_ij
 
     exp = "T_{"*string(p)*"} = "
     for s in 0:MAXI-1
