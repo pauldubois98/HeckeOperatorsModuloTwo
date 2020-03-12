@@ -10,3 +10,7 @@ __pycache__
 
 # GP
 gp_history.txt
+
+# tikz picture generator
+*.log
+*.gz

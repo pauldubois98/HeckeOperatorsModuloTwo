@@ -1,0 +1,75 @@
+\documentclass[tikz]{standalone}
+
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=0.7]
+	%%%nodes
+	%i+j=0
+	\node at (0,0) (M00){$M_{00} = \mathbb{Q}$};
+	%i+j=1
+	\node at (-2,2) (M01){$M_{01}$};
+	\node at (2,2) (M10){$M_{10}$};
+	%i+j=2
+	\node at (-4,4) (M02){$M_{02}$};
+	\node at (0,4) (M11){$M_{11}$};
+	\node at (4,4) (M20){$M_{20}$};
+	%i+j=3
+	\node at (-6,6) (M03){$M_{03}$};
+	\node at (-2,6) (M12){$M_{12}$};
+	\node at (2,6) (M21){$M_{21}$};
+	\node at (6,6) (M30){$M_{30}$};
+	%i+j=4
+	\node at (-7,7) (M04){$M_{04}$};
+	%\node at (-3.5,7) (M13){$M_{13}$};
+	%\node at (0,7) (M22){$M_{22}$};
+	%\node at (3.5,7) (M31){$M_{31}$};
+	\node at (7,7) (M40){$M_{40}$};
+	%i+j=5
+	\node at (-9,9)(M05){$M_{05}$};
+	\node at (9,9) (M50){$M_{50}$};
+	%i+j=6
+	\node at (-10,10) (M06){$M_{06}$};
+	\node at (10,10) (M60){$M_{60}$};
+	%i+j=7
+	\node at (-11,11) (M07){$M_{07}$};
+	\node at (11,11) (M70){$M_{70}$};
+	%i+j=...
+	\node at (-12,12) (M0k){$\cdots$};
+	\node at (12,12) (Mk0){$\cdots$};
+	%%%links
+	%level 1
+	\draw[-] (M00) -- (M10)node[midway, below right, rotate=45, scale=0.8] {$4$};
+	\draw[-] (M00) -- (M01)node[midway, below left, rotate=-45, scale=0.8] {$4$};
+	%level 2
+	\draw[double] (M01) -- (M10);
+	\draw[-] (M01) -- (M11)node[midway, below right, scale=0.8] {$2$};
+	\draw[-] (M10) -- (M11)node[midway, below left, scale=0.8] {$2$};
+	\draw[-] (M01) -- (M02)node[midway, below left, rotate=-45, scale=0.8] {$2$};
+	\draw[-] (M10) -- (M20)node[midway, below right, rotate=45, scale=0.8] {$2$};
+	%unknown middle
+	\draw[dashed] (M11) -- (M21)node[midway, below right, scale=0.8] {?};	\draw[dashed] (M20) -- (M21)node[midway, below left, scale=0.8] {?};
+	\draw[dashed] (M11) -- (M12)node[midway, below left, scale=0.8] {?};
+	\draw[dashed] (M02) -- (M12)node[midway, below right, scale=0.8] {?};
+	%left branch
+	\draw[-] (M02) -- (M03)node[midway, below left, rotate=-45, scale=0.8] {$2$};
+	\draw[double] (M03) -- (M04);
+	\draw[-] (M04) -- (M05)node[midway, below left, rotate=-45, scale=0.8] {$2$};
+	\draw[double] (M05) -- (M06);
+	\draw[double] (M06) -- (M07);
+	\draw[-] (M07) -- (M0k);
+	%right branch
+	\draw[-] (M20) -- (M30)node[midway, below right, rotate=45, scale=0.8] {$2$};
+	\draw[double] (M30) -- (M40);
+	\draw[-] (M40) -- (M50)node[midway, below right, rotate=45, scale=0.8] {$2$};
+	\draw[double] (M50) -- (M60);
+	\draw[double] (M60) -- (M70);
+	\draw[-] (M70) -- (Mk0);
+\end{tikzpicture}
+
+\end{document}
