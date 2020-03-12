@@ -26,7 +26,7 @@
 *0,7,a_04_ext_00011110.txt?
 --08
 \For \(a_{08}\), it is a little bit special: We found 3 governing fields. This is possible, since governing fields aren't unique. Note, for this case, we did computation only up to 10<sup>3</sup>, which doesn't give a result as strong as for other \(a_{ij}\) discussed.
-\<strong>First possibility/strong>
+\<strong>First possibility</strong>
 *0,8,a_04_ext_00011110.txt?
 \<strong>Second possibility</strong>
 +0,8,a_04_ext_00000001.txt?
