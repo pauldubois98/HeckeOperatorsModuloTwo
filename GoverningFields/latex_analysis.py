@@ -22,10 +22,10 @@ def latex_group_name(group_name):
                .replace('C', 'C_')\
                .replace('x', '\\times')
 
-def analysis(file, i,j, last=[], align=False, equal=' = '):
+def analysis(file, i,j, last=[], align=False, equal=' = ', cwd=''):
     #print('\t\t'+'='*10+' a_'+str(i)+','+str(j)+' '+str(file)+' '+'='*10)
     # DATA
-    primes1, primes0, primes_undefined = a_ij(i,j)
+    primes1, primes0, primes_undefined = a_ij(i,j, cwd+"\\a_ij(p)-merged.txt")
     conjugacy_classes = galois_conjugacy_classes(file)
     galois_ident = galois_group_id(file)
     galois_name = group_name(galois_ident)
@@ -78,6 +78,22 @@ def analysis(file, i,j, last=[], align=False, equal=' = '):
                 pass
             else:
                 frobenius0.append(F_p)
+    #primes
+    p0 = len(primes0)
+    p1 = len(primes1)
+    p_0 = str(p0)
+    p_1 = str(p1)
+    p_tot = str(len(primes0)+len(primes1))
+    grp_size = group_size(conjugacy_classes)
+    frac0 = (grp_size*len(primes0))\
+           /(len(primes1)+len(primes0))
+    frac1 = (grp_size*len(primes1))\
+           /(len(primes1)+len(primes0))
+    #probas
+    class_sizes = []
+    for c in conjugacy_classes:
+        class_sizes.append(len(c))
+    p = proba(class_sizes, grp_size, p0, p1)
 
     # Extension identification
     if len(last)==0:
@@ -129,18 +145,12 @@ G_{"+str(last[0])+str(last[1])+"}$).")
           +str(conjugacy_classes_size(frobenius1, conjugacy_classes))+"$")
     print("\t\t\\item $\\abs{C_{"+str(i)+str(j)+"}^1} = "\
           +str(len(frobenius1))+"$")
+    P = str(p)[:5]+' \\cdot 10^{'+str(p).split('e')[1]+'}'
+    print("\t\t\\item $P_{"+str(i)+str(j)+"} \\approx "+P+"$")
     print("\t\\end{itemize}")
     
     #itemize - primes
     print("\t\\begin{itemize}")
-    p_0 = str(len(primes0))
-    p_1 = str(len(primes1))
-    p_tot = str(len(primes0)+len(primes1))
-    grp_size = group_size(conjugacy_classes)
-    frac0 = (grp_size*len(primes0))\
-           /(len(primes1)+len(primes0))
-    frac1 = (grp_size*len(primes1))\
-           /(len(primes1)+len(primes0))
     #primes 0
     print("\t\t\\item $\\abs{\\{ p \\in \\primes \
 \\mid a_{"+str(i)+str(j)+"}(p)=0, p<10^4 \\}} = "+p_0+"$\\\\")
@@ -186,19 +196,19 @@ Here we look at the maps $a_{"+name+"}$.")
             i, j, file = l[1:-1].split(',')
             i = int(i)
             j = int(j)
-            analysis(file, i,j, (last_i, last_j), equal=equal)
+            analysis(file, i,j, (last_i, last_j), equal=equal, cwd=root)
         elif l[0]=="+":
             i, j, file = l[1:-1].split(',')
             i = int(i)
             j = int(j)
-            analysis(file, i,j, align=True, equal=equal)
+            analysis(file, i,j, align=True, equal=equal, cwd=root)
             last_i = int(i)
             last_j = int(j)
         else:
             i, j, file = l[:-1].split(',')
             i = int(i)
             j = int(j)
-            analysis(file, i,j, equal=equal)
+            analysis(file, i,j, equal=equal, cwd=root)
             last_i = int(i)
             last_j = int(j)
         l = f.readline()

@@ -1,6 +1,19 @@
 import requests
 from sympy import *
 
+
+def proba(class_sizes, group_size, p0, p1):
+    p=0
+    for i in range(2**len(class_sizes)):
+        k = 0 #set size
+        for j in range(len(class_sizes)):
+            if i>>j & 1:
+                k+=class_sizes[j]
+        #print(i, i>>0 & 1, i>>1 & 1, i>>2 & 1, k)
+        p+=(k/group_size)**p1*((group_size-k)/group_size)**p0
+    return p
+
+
 def frobenius_of_prime(p, file):
     f = open(file, 'r')
     l = f.readline()

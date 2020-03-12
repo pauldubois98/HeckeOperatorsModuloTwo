@@ -23,7 +23,7 @@ def latex_group_name(group_name):
                .replace('x', '\\times')
 
 def analysis(file, i,j, last=[], align=False, equal=' = ', cwd=''):
-    #print('\t\t'+'='*10+' a_'+str(i)+','+str(j)+' '+str(file)+' '+'='*10)
+    print('\t\t'+'='*10+' a_'+str(i)+','+str(j)+' '+str(file)+' '+'='*10)
     # DATA
     primes1, primes0, primes_undefined = a_ij(i,j, cwd+"\\a_ij(p)-merged.txt")
     conjugacy_classes = galois_conjugacy_classes(file)
@@ -94,74 +94,45 @@ def analysis(file, i,j, last=[], align=False, equal=' = ', cwd=''):
     class_sizes = []
     for c in conjugacy_classes:
         class_sizes.append(len(c))
+        print(' ', len(c))
     p = proba(class_sizes, grp_size, p0, p1)
-    P = str(p)[:5]+' \\cdot 10^{'+str(p).split('e')[1]+'}'
+    
+    #primes 0
+    print("|\\{ p \\in \\mathbb{P} \
+\\mid a_{"+str(i)+str(j)+"}(p)=0, p<10^4 \\}| = "+p_0+"")
+    print("Ratio: \\(\\frac{ "+p_0+" }{ "+p_tot+" } \\approx \
+\\frac{ "+str(int(frac0+0.5))+" }{ "+str(grp_size)+" }")
+    #primes 1
+    print("|\\{ p \\in \\mathbb{P} \
+\\mid a_{"+str(i)+str(j)+"}(p)=1, p<10^4 \\}| = "+p_1+"")
+    print("Ratio: \\(\\frac{ "+p_1+" }{ "+p_tot+" } \\approx \
+\\frac{ "+str(int(frac1+0.5))+" }{ "+str(grp_size)+" }")
 
-    # Extension identification
-    print('<p>')
-    if len(last)!=0:
-        print("Same governing field as \\(a_{"\
-              +str(last[0])+str(last[1])+"}\\).<br>")
 
     print("Governing field:")
-    if extension_name_bis[:len(extension_name)]!=extension_name:
-        ext = "\\[M_{"+str(i)+str(j)+"}"\
-              +equal+extension_name[2:-2]+"\\]\n"
-        ext+= " - or - \n"
-        ext+= "\\[M_{"+str(i)+str(j)+"}"\
-              +equal+extension_name_bis[2:-2]+'\\]'
-    else:
-        ext = "\\[M_{"+str(i)+str(j)+"}"\
-              +equal+extension_name[2:-2]+'\\]'
-    ext0 = str(ext)
-    ext = ext.replace('$$', '\]', 1)
-    ext = ext.replace('$$', '\[', 1)
-    while ext0!=ext:
-        ext0 = str(ext)
-        ext = ext.replace('$$', '\]', 1)
-        ext = ext.replace('$$', '\[', 1)
-    print(ext)
-    print('</p>')
-
-
-    #multicols
-    #print("\\begin{multicols}{2}")
+    print(extension_name_bis)
     
     #itemize - group
-    print("\t<ul>")
-    print("\t\t<li> \\(G_{"+str(i)+str(j)+"} = "\
-          +latex_group_name(galois_name)+"\\)</li>")
-    print("\t\t<li> \\(|S_{"+str(i)+str(j)+"}^1| = "\
+    print("G_{"+str(i)+str(j)+"} = "\
+          +latex_group_name(galois_name)\
+          +"")
+    print("|S_{"+str(i)+str(j)+"}^1| = "\
           +str(conjugacy_classes_size(frobenius1, conjugacy_classes))\
-          +"\\)</li>")
-    print("\t\t<li> \\(|C_{"+str(i)+str(j)+"}^1| = "\
-          +str(len(frobenius1))+"\\)</li>")
-    print("\t\t<li> \\(|P_{"+str(i)+str(j)+"}| \\approx "\
-          +P+"\\)</li>")
-    print("\t</ul>")
+          +"")
+    print("|C_{"+str(i)+str(j)+"}^1| = "\
+          +str(len(frobenius1))\
+          +"")
+    print("#conjugacy classes:", len(conjugacy_classes))
     
-    #itemize - primes
-    print("\t<ul>")
-    #primes 0
-    print("\t\t<li>\\(|\\{ p \\in \\mathbb{P} \
-\\mid a_{"+str(i)+str(j)+"}(p)=0, p<10^4 \\}| = "+p_0+"\\)<br>")
-    print("Ratio: \\(\\frac{ "+p_0+" }{ "+p_tot+" } \\approx \
-\\frac{ "+str(int(frac0+0.5))+" }{ "+str(grp_size)+" }\\)</li>")
-    #primes 1
-    print("\t\t<li>\\(|\\{ p \\in \\mathbb{P} \
-\\mid a_{"+str(i)+str(j)+"}(p)=1, p<10^4 \\}| = "+p_1+"\\)<br>")
-    print("Ratio: \\(\\frac{ "+p_1+" }{ "+p_tot+" } \\approx \
-\\frac{ "+str(int(frac1+0.5))+" }{ "+str(grp_size)+" }\\)</li>")
-    print("\t</ul>")
     
-    #multicols
-    #print("\\end{multicols}")
-
+    print("PROBA:", p)
+    
+    
 
 
 if __name__=='__main__':
     root = os.getcwd()
-    f = open('to_analyse_html.txt', 'r')
+    f = open('to_analyse.txt', 'r')
     l = f.readline()
     while l!='':  
         if l[-2]=='?':
