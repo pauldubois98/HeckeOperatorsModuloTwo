@@ -8,7 +8,10 @@ When writing ![T_p = \sum_{i+j \leq 1}a_{ij}(p)T_3^iT_5^j](https://render.github
 We try here to find the corresponding giverning fields.
 
 ## Link to tables
-The index of table created with code in this repository can be found [here](https://pauldubois98.github.io/HeckeOperatorsModuloTwo/) (see [https://pauldubois98.github.io/HeckeOperatorsModuloTwo/](https://pauldubois98.github.io/HeckeOperatorsModuloTwo/)).
+The index of table created with code in this repository can be found [here](https://pauldubois98.github.io/HeckeOperatorsModuloTwo/) (see https://pauldubois98.github.io/HeckeOperatorsModuloTwo/).
+
+## Link explanations
+Some explanations about the methods used may be fount in the section 6 of [this PDF](https://github.com/pauldubois98/MathematicalPaper_ModularForms/blob/master/main.pdf) (see https://github.com/pauldubois98/MathematicalPaper_ModularForms/blob/master/main.pdf).
 
 
 
