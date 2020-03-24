@@ -7,22 +7,26 @@
     <meta name="description" content="Plots of code">
     <meta name="author" content="Paul Dubois">
     <link rel="stylesheet" type="text/css" href="plots.css">
+    <!-- Plotly.js -->
+    <script src="plotly.min.js"></script>
 </head>
 
 <body>
     <a href="../"><h4>Back to navigation</h4></a>
-    <h1>Integers corresponding to codes</h1>
+    <h1>Plots of Codes</h1>
 
     <p><a href="../code_to_even/">Code to even table</a> and <a href="../code_to_odd//">Code to odd table</a> have precise values tables.<br>
         (here, we concentrate on plots)</p>
 
-    <h2>Plots</h2>
-    <h3>Animated GIF</h3>
-    <img src="movie0.gif" alt="plot integers corresponding to codes"><br>
+    <h3>Interactive Plot</h3>
+    <div id="chart"></div>
+    <form>
+        <input type="checkbox" id="auto-rotate">Rotate
+    </form>
+
+    <div style="height: 3em;"></div>
 
     <h3>Ranges</h3>
-    <img src="code_plot_5-5.svg" alt="plot integers corresponding to codes"><br>
-    <img src="code_plot_10-10.svg" alt="plot integers corresponding to codes"><br>
     <img src="code_plot_15-15.svg" alt="plot integers corresponding to codes"><br>
     <img src="code_plot_25-25.svg" alt="plot integers corresponding to codes"><br>
     <img src="code_plot_100-100.svg" alt="plot integers corresponding to codes"><br>
@@ -34,4 +38,5 @@
     </p>
 </body>
 
+<script src="plot.js"></script>
 </html>
